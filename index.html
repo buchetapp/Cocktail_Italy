@@ -4,12 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Redirecting...</title>
-  <script>
-    // Замените на вашу OneLink-ссылку
-    window.location.href = "https://buchet.onelink.me/LLSu/y6uv971b";
-  </script>
+
+  <!-- Вставка AppsFlyer Smart Script -->
+  <script src="https://cdn.appsflyer.com/smart-script/latest/appsflyer.smart.script.min.js"></script>
 </head>
 <body>
-  <p>Переход... Пожалуйста, подождите.</p>
+  <p>Перенаправление... Пожалуйста, подождите.</p>
+
+  <script>
+    // Инициализация и создание OneLink с параметрами
+    var oneLinkURL = "https://buchet.onelink.me/LLSu/y6uv971b";
+    var mediaSource = {keys: ["shop"], defaultValue: "cocktail"};
+    var custom_ss_ui = {paramKey: "af_ss_ui", defaultValue: "true"};
+
+    // Генерация OneLink URL с параметрами
+    var result = window.AF_SMART_SCRIPT.generateOneLinkURL({
+      oneLinkURL: oneLinkURL,
+      afParameters: {
+        mediaSource: mediaSource,
+        afCustom: [custom_ss_ui]
+      }
+    });
+
+    // Автоматический редирект на генерированную ссылку
+    window.location.href = result.clickURL;  // Переадресация на сгенерированную ссылку
+  </script>
 </body>
 </html>
