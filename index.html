@@ -17,23 +17,29 @@
     var mediaSource = {keys: ["shop"], defaultValue: "cocktail"};
     var custom_ss_ui = {paramKey: "af_ss_ui", defaultValue: "true"};
 
-    // Генерация OneLink URL с параметрами
-    window.AF_SMART_SCRIPT.generateOneLinkURL({
-      oneLinkURL: oneLinkURL,
-      afParameters: {
-        mediaSource: mediaSource,
-        afCustom: [custom_ss_ui]
-      }
-    }).then(function(result) {
-      // Переадресация на сгенерированный OneLink URL
-      if(result && result.clickURL) {
-        window.location.href = result.clickURL;  // Переадресация на сгенерированную ссылку
-      } else {
-        console.error("Ошибка: Не удалось сгенерировать ссылку.");
-      }
-    }).catch(function(error) {
-      console.error("Ошибка в генерации ссылки: ", error);
-    });
+    // Функция для генерации ссылки с помощью Smart Script
+    function generateAndRedirect() {
+      window.AF_SMART_SCRIPT.generateOneLinkURL({
+        oneLinkURL: oneLinkURL,
+        afParameters: {
+          mediaSource: mediaSource,
+          afCustom: [custom_ss_ui]
+        }
+      }).then(function(result) {
+        // Проверка и редирект
+        if (result && result.clickURL) {
+          window.location.href = result.clickURL;  // Переадресация на сгенерированную ссылку
+        } else {
+          console.error("Ошибка: Не удалось сгенерировать ссылку.");
+        }
+      }).catch(function(error) {
+        console.error("Ошибка в генерации ссылки: ", error);
+      });
+    }
+
+    // Запуск генерации и редиректа
+    generateAndRedirect();
   </script>
 </body>
 </html>
+
